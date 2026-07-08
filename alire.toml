@@ -35,7 +35,6 @@ parameter_set = { type = "Enum", values = ["ML_KEM_512", "ML_KEM_768", "ML_KEM_1
 
 [[depends-on]]
 gnat = ">=14.2.1"
-gnatprove = "^15.1.0"
 sha3_ada = "~1.0"
 
 [[pins]]
