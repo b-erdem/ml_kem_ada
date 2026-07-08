@@ -1,0 +1,6 @@
+dependency:ml_kem_ada=0.1.0=80a244fa81205a8aa2f20dbaaf1d22b1f6cc8259d0eb2deab3738a8135b36993
+dependency:sha3_ada=0.1.0=73b0fa193ba22e03c9cc299badd9c860f32b8c9131da98e6ae4ddf56e4961665
+external:LIBRARY_TYPE=default
+external:ML_KEM_ADA_TESTS_LIBRARY_TYPE=default
+profile:ml_kem_ada_tests=DEVELOPMENT
+switches:ml_kem_ada_tests=-Og,-fdata-sections,-ffunction-sections,-g,-gnatVa,-gnatW8,-gnatw.X,-gnatwa,-gnaty-d,-gnaty3,-gnatyA,-gnatyB,-gnatyI,-gnatyO,-gnatyS,-gnatya,-gnatyb,-gnatyc,-gnatye,-gnatyf,-gnatyh,-gnatyi,-gnatyk,-gnatyl,-gnatym,-gnatyn,-gnatyp,-gnatyr,-gnatyt,-gnatyu,-gnatyx

@@ -1,0 +1,85 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    name: Build + test (Linux x86_64)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Alire
+        uses: alire-project/setup-alire@v4
+        with:
+          version: '2.1.0'
+
+      - name: Build library
+        run: alr -n build
+
+      - name: Build and run tests
+        working-directory: tests
+        run: |
+          alr -n exec -- gprbuild -P test_ml_kem.gpr
+          ./bin/test_ml_kem
+
+  prove:
+    name: SPARK proof (level 2, CVC5 + Z3)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Alire
+        uses: alire-project/setup-alire@v4
+        with:
+          version: '2.1.0'
+
+      - name: Install gnatprove
+        run: |
+          alr -n toolchain --select gnat_native gprbuild
+          # Most crates already declare gnatprove in depends-on; only
+          # add it when absent (alr errors on duplicate dependencies).
+          grep -q '^gnatprove' alire.toml || alr -n with gnatprove^15.1.0
+
+      - name: Run gnatprove
+        run: |
+          alr -n build
+          alr -n exec -- gnatprove -P ml_kem_ada.gpr --level=2 --report=fail
+
+  ct-harness:
+    name: Constant-time empirical (timing + cache)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Alire and valgrind
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y valgrind
+
+      - uses: alire-project/setup-alire@v4
+        with:
+          version: '2.1.0'
+
+      - name: Build CT harness (optional, workspace-only)
+        # The empirical CT harness (ct_harness) is a separate,
+        # not-yet-published workspace crate; in a standalone checkout it
+        # is absent and this step skips. The committed CT evidence for
+        # this crate lives in the repository (cachegrind LLd identity,
+        # dudect Welch t) and is re-measured in the workspace. A
+        # working-directory: pointing at the sibling would fail before
+        # the guard could run, hence the in-script check.
+        run: |
+          if [ -d ../ct_harness ]; then
+            (cd ../ct_harness && alr -n build)
+          else
+            echo "::notice::ct_harness not available in standalone checkout; skipping empirical CT step"
+          fi

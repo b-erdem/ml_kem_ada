@@ -1,0 +1,28 @@
+with "ml_kem_ada";
+
+project Test_ML_KEM is
+
+   for Main use ("test_ml_kem.adb");
+   for Object_Dir use "obj";
+   for Exec_Dir use "bin";
+   for Source_Dirs use ("src");
+   for Languages use ("Ada");
+
+   package Compiler is
+      for Switches ("Ada") use
+        ("-g", "-O2", "-gnatwa", "-gnatW8", "-gnatyM120",
+         "-gnat2022");
+   end Compiler;
+
+   --  -L always emitted; on Linux the directory is harmless
+   --  (linker silently ignores nonexistent -L paths). On macOS it
+   --  defaults to the Command Line Tools SDK path. Override with
+   --  -XSDK_LIB="$(xcrun --show-sdk-path)/usr/lib" on Xcode.app
+   --  installs.
+   package Linker is
+      for Switches ("Ada") use
+        ("-L" & External ("SDK_LIB",
+           "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib"));
+   end Linker;
+
+end Test_ML_KEM;

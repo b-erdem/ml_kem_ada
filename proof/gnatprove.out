@@ -1,0 +1,174 @@
+=========================
+Summary of SPARK analysis
+=========================
+
+------------------------------------------------------------------------------------------------------------------------
+SPARK Analysis results        Total        Flow                                           Provers   Justified   Unproved
+------------------------------------------------------------------------------------------------------------------------
+Data Dependencies                 .           .                                                 .           .          .
+Flow Dependencies                 .           .                                                 .           .          .
+Initialization                  177         177                                                 .           .          .
+Non-Aliasing                      .           .                                                 .           .          .
+Run-time Checks                1316           .    1316 (CVC5 2%, Trivial 1%, Z3 95%, altergo 1%)           .          .
+Assertions                      492           .     492 (CVC5 4%, Trivial 0%, Z3 92%, altergo 4%)           .          .
+Functional Contracts            186           .     186 (CVC5 3%, Trivial 0%, Z3 95%, altergo 3%)           .          .
+LSP Verification                  .           .                                                 .           .          .
+Termination                      33          29                                            4 (Z3)           .          .
+Concurrency                       .           .                                                 .           .          .
+------------------------------------------------------------------------------------------------------------------------
+Total                          2204    206 (9%)                                        1998 (91%)           .          .
+
+
+max steps used for successful proof: 62483
+
+============================
+Most difficult proved checks
+============================
+
+ml_kem-serialize.adb:190:13: loop invariant after first iteration proved in max 13 seconds
+ml_kem-serialize.adb:196:13: loop invariant after first iteration proved in max 12 seconds
+ml_kem-serialize.adb:184:13: loop invariant after first iteration proved in max 9 seconds
+ml_kem-serialize.adb:178:13: loop invariant after first iteration proved in max 8 seconds
+ml_kem-serialize.adb:165:13: loop invariant after first iteration proved in max 5 seconds
+ml_kem-serialize.adb:171:13: loop invariant after first iteration proved in max 4 seconds
+ml_kem-serialize.adb:153:13: loop invariant after first iteration proved in max 3 seconds
+ml_kem-serialize.adb:175:13: loop invariant after first iteration proved in max 3 seconds
+ml_kem-serialize.adb:173:31: range check proved in max 2 seconds
+ml_kem-serialize.adb:159:13: loop invariant after first iteration proved in max 1 seconds
+
+========================
+Detailed analysis report
+========================
+
+Analyzed 19 units
+in unit ml_kem, 5 subprograms and packages out of 5 analyzed
+  ML_KEM at ml_kem.ads:4 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.Freeze at ml_kem.ads:128 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (3 checks)
+  ML_KEM.Load24_LE at ml_kem.ads:120 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.Load32_LE at ml_kem.ads:114 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.U16_To_I32 at ml_kem.ads:125 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+in unit ml_kem-cbd, 4 subprograms and packages out of 4 analyzed
+  ML_KEM.CBD at ml_kem-cbd.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.CBD.CBD2 at ml_kem-cbd.ads:6 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (11 checks)
+  ML_KEM.CBD.CBD3 at ml_kem-cbd.ads:9 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (11 checks)
+  ML_KEM.CBD.Sample_Eta1 at ml_kem-cbd.ads:17 flow analyzed (0 errors, 0 checks, 2 warnings and 0 pragma Assume statements) and proved (3 checks)
+in unit ml_kem-indcpa, 9 subprograms and packages out of 9 analyzed
+  ML_KEM.IndCPA at ml_kem-indcpa.ads:3 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.IndCPA.Decrypt at ml_kem-indcpa.ads:31 flow analyzed (0 errors, 0 checks, 7 warnings and 0 pragma Assume statements) and proved (23 checks)
+  ML_KEM.IndCPA.Encrypt at ml_kem-indcpa.ads:20 flow analyzed (0 errors, 0 checks, 7 warnings and 0 pragma Assume statements) and proved (66 checks)
+  ML_KEM.IndCPA.GenMatrix at ml_kem-indcpa.adb:14 flow analyzed (0 errors, 0 checks, 1 warnings and 0 pragma Assume statements) and proved (24 checks)
+  ML_KEM.IndCPA.KeyGen at ml_kem-indcpa.ads:10 flow analyzed (0 errors, 0 checks, 2 warnings and 0 pragma Assume statements) and proved (33 checks)
+  ML_KEM.IndCPA.Pack_PK at ml_kem-indcpa.adb:93 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (22 checks)
+  ML_KEM.IndCPA.Pack_SK at ml_kem-indcpa.adb:150 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (13 checks)
+  ML_KEM.IndCPA.Unpack_PK at ml_kem-indcpa.adb:120 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (20 checks)
+  ML_KEM.IndCPA.Unpack_SK at ml_kem-indcpa.adb:172 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (15 checks)
+in unit ml_kem-kem, 8 subprograms and packages out of 8 analyzed
+  ML_KEM.KEM at ml_kem-kem.ads:3 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.KEM.Coeff_Out_Of_Range at ml_kem-kem.adb:14 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  ML_KEM.KEM.Copy_Bytes at ml_kem-kem.adb:47 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.KEM.Decapsulate at ml_kem-kem.ads:67 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (63 checks)
+  ML_KEM.KEM.Encapsulate at ml_kem-kem.ads:34 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (6 checks)
+  ML_KEM.KEM.Encapsulate_Checked at ml_kem-kem.ads:56 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (3 checks)
+  ML_KEM.KEM.KeyGen at ml_kem-kem.ads:10 flow analyzed (0 errors, 0 checks, 1 warnings and 0 pragma Assume statements) and proved (259 checks)
+  ML_KEM.KEM.Valid_Encaps_Key at ml_kem-kem.ads:31 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (7 checks)
+in unit ml_kem-ntt, 6 subprograms and packages out of 6 analyzed
+  ML_KEM.NTT at ml_kem-ntt.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.NTT.BaseMul at ml_kem-ntt.ads:63 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (18 checks)
+  ML_KEM.NTT.Butterfly at ml_kem-ntt.adb:19 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (17 checks)
+  ML_KEM.NTT.InvButterfly at ml_kem-ntt.adb:152 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (17 checks)
+  ML_KEM.NTT.InvNTT at ml_kem-ntt.ads:41 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (100 checks)
+  ML_KEM.NTT.NTT at ml_kem-ntt.ads:23 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (104 checks)
+in unit ml_kem-ntt_zetas, 1 subprograms and packages out of 1 analyzed
+  ML_KEM.NTT_Zetas at ml_kem-ntt_zetas.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+in unit ml_kem-poly, 21 subprograms and packages out of 21 analyzed
+  ML_KEM.Poly at ml_kem-poly.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.Poly.Compress_11 at ml_kem-poly.ads:43 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (18 checks)
+  ML_KEM.Poly.Compress_5 at ml_kem-poly.ads:51 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (12 checks)
+  ML_KEM.Poly.Compress_Du at ml_kem-poly.ads:24 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (17 checks)
+  ML_KEM.Poly.Compress_Dv at ml_kem-poly.ads:32 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (15 checks)
+  ML_KEM.Poly.Decompress_11 at ml_kem-poly.ads:47 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (15 checks)
+  ML_KEM.Poly.Decompress_11_Coeff at ml_kem-poly.adb:32 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (6 checks)
+  ML_KEM.Poly.Decompress_5 at ml_kem-poly.ads:55 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (15 checks)
+  ML_KEM.Poly.Decompress_5_Coeff at ml_kem-poly.adb:37 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (6 checks)
+  ML_KEM.Poly.Decompress_Du at ml_kem-poly.ads:28 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (15 checks)
+  ML_KEM.Poly.Decompress_Du_Coeff at ml_kem-poly.adb:20 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (6 checks)
+  ML_KEM.Poly.Decompress_Dv at ml_kem-poly.ads:36 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (15 checks)
+  ML_KEM.Poly.Decompress_Dv_Coeff at ml_kem-poly.adb:25 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (6 checks)
+  ML_KEM.Poly.Poly_Add at ml_kem-poly.ads:9 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (13 checks)
+  ML_KEM.Poly.Poly_Freeze at ml_kem-poly.ads:70 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (5 checks)
+  ML_KEM.Poly.Poly_FromMsg at ml_kem-poly.ads:64 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (9 checks)
+  ML_KEM.Poly.Poly_Reduce at ml_kem-poly.ads:6 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (5 checks)
+  ML_KEM.Poly.Poly_Sub at ml_kem-poly.ads:14 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (13 checks)
+  ML_KEM.Poly.Poly_ToMont at ml_kem-poly.ads:19 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (6 checks)
+  ML_KEM.Poly.Poly_ToMsg at ml_kem-poly.ads:68 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (4 checks)
+  ML_KEM.Poly.Poly_ToggleNeg at ml_kem-poly.ads:59 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (10 checks)
+in unit ml_kem-polyvec, 7 subprograms and packages out of 7 analyzed
+  ML_KEM.PolyVec at ml_kem-polyvec.ads:3 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.PolyVec.PolyVec_Add at ml_kem-polyvec.ads:8 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (13 checks)
+  ML_KEM.PolyVec.PolyVec_Basemul_Acc at ml_kem-polyvec.ads:33 flow analyzed (0 errors, 0 checks, 1 warnings and 0 pragma Assume statements) and proved (6 checks)
+  ML_KEM.PolyVec.PolyVec_Freeze at ml_kem-polyvec.ads:48 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (4 checks)
+  ML_KEM.PolyVec.PolyVec_InvNTT at ml_kem-polyvec.ads:25 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (8 checks)
+  ML_KEM.PolyVec.PolyVec_NTT at ml_kem-polyvec.ads:17 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (8 checks)
+  ML_KEM.PolyVec.PolyVec_Reduce at ml_kem-polyvec.ads:46 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+in unit ml_kem-reduce, 4 subprograms and packages out of 4 analyzed
+  ML_KEM.Reduce at ml_kem-reduce.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.Reduce.Barrett_Reduce at ml_kem-reduce.ads:11 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (9 checks)
+  ML_KEM.Reduce.FqMul at ml_kem-reduce.ads:15 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (2 checks)
+  ML_KEM.Reduce.Montgomery_Reduce at ml_kem-reduce.ads:6 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (18 checks)
+in unit ml_kem-sampling, 2 subprograms and packages out of 2 analyzed
+  ML_KEM.Sampling at ml_kem-sampling.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.Sampling.RejUniform at ml_kem-sampling.ads:6 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (43 checks)
+in unit ml_kem-serialize, 9 subprograms and packages out of 9 analyzed
+  ML_KEM.Serialize at ml_kem-serialize.ads:12 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.Serialize.ByteDecode1 at ml_kem-serialize.ads:57 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (29 checks)
+  ML_KEM.Serialize.ByteDecode10 at ml_kem-serialize.ads:119 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (101 checks)
+  ML_KEM.Serialize.ByteDecode12 at ml_kem-serialize.ads:30 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (30 checks)
+  ML_KEM.Serialize.ByteDecode4 at ml_kem-serialize.ads:74 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (15 checks)
+  ML_KEM.Serialize.ByteEncode1 at ml_kem-serialize.ads:43 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (51 checks)
+  ML_KEM.Serialize.ByteEncode10 at ml_kem-serialize.ads:83 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (206 checks)
+  ML_KEM.Serialize.ByteEncode12 at ml_kem-serialize.ads:17 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (43 checks)
+  ML_KEM.Serialize.ByteEncode4 at ml_kem-serialize.ads:66 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (15 checks)
+in unit ml_kem-serialize-properties, 5 subprograms and packages out of 5 analyzed
+  ML_KEM.Serialize.Properties at ml_kem-serialize-properties.ads:8 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.Serialize.Properties.Lemma_Round_Trip_1 at ml_kem-serialize-properties.ads:15 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (15 checks)
+  ML_KEM.Serialize.Properties.Lemma_Round_Trip_10 at ml_kem-serialize-properties.ads:21 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (62 checks)
+  ML_KEM.Serialize.Properties.Lemma_Round_Trip_12 at ml_kem-serialize-properties.ads:12 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (41 checks)
+  ML_KEM.Serialize.Properties.Lemma_Round_Trip_4 at ml_kem-serialize-properties.ads:18 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (13 checks)
+in unit ml_kem-symmetric, 7 subprograms and packages out of 7 analyzed
+  ML_KEM.Symmetric at ml_kem-symmetric.ads:3 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.Symmetric.Hash_G at ml_kem-symmetric.ads:10 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (5 checks)
+  ML_KEM.Symmetric.Hash_H at ml_kem-symmetric.ads:14 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (5 checks)
+  ML_KEM.Symmetric.PRF at ml_kem-symmetric.ads:18 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (12 checks)
+  ML_KEM.Symmetric.To_SHA3 at ml_kem-symmetric.adb:6 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (8 checks)
+  ML_KEM.Symmetric.XOF_Absorb at ml_kem-symmetric.ads:25 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (6 checks)
+  ML_KEM.Symmetric.XOF_Squeeze at ml_kem-symmetric.ads:33 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (9 checks)
+in unit ml_kem-verify, 3 subprograms and packages out of 3 analyzed
+  ML_KEM.Verify at ml_kem-verify.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.Verify.CMOV at ml_kem-verify.ads:13 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (9 checks)
+  ML_KEM.Verify.Verify at ml_kem-verify.ads:6 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (11 checks)
+in unit ml_kem-wipe, 4 subprograms and packages out of 4 analyzed
+  ML_KEM.Wipe at ml_kem-wipe.ads:17 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  ML_KEM.Wipe.Wipe_Byte_Array at ml_kem-wipe.ads:22 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (6 checks)
+  ML_KEM.Wipe.Wipe_Poly_Vector at ml_kem-wipe.ads:32 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (4 checks)
+  ML_KEM.Wipe.Wipe_Polynomial at ml_kem-wipe.ads:27 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (4 checks)
+in unit ml_kem_ada_config, 0 subprograms and packages out of 0 analyzed
+in unit sha3, 11 subprograms and packages out of 11 analyzed
+  SHA3 at sha3.ads:3 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  SHA3.Absorb at sha3.ads:71 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (31 checks)
+  SHA3.Extract_From_State at sha3.adb:43 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (14 checks)
+  SHA3.Init at sha3.ads:63 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+  SHA3.SHA3_256 at sha3.ads:39 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (3 checks)
+  SHA3.SHA3_512 at sha3.ads:44 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (3 checks)
+  SHA3.SHAKE128 at sha3.ads:49 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (3 checks)
+  SHA3.SHAKE256 at sha3.ads:56 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (3 checks)
+  SHA3.Squeeze at sha3.ads:84 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (39 checks)
+  SHA3.XOR_Byte_Into_State at sha3.adb:7 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (6 checks)
+  SHA3.XOR_Into_State at sha3.adb:19 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (14 checks)
+in unit sha3-keccak, 3 subprograms and packages out of 3 analyzed
+  SHA3.Keccak at sha3-keccak.ads:1 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  SHA3.Keccak.Permute at sha3-keccak.ads:6 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (9 checks)
+  SHA3.Keccak.Rotate_Left_64 at sha3-keccak.adb:7 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (1 checks)
+in unit sha3-wipe, 3 subprograms and packages out of 3 analyzed
+  SHA3.Wipe at sha3-wipe.ads:14 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (0 checks)
+  SHA3.Wipe.Wipe_Byte_Array at sha3-wipe.ads:26 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (6 checks)
+  SHA3.Wipe.Wipe_Sponge_State at sha3-wipe.ads:19 flow analyzed (0 errors, 0 checks, 0 warnings and 0 pragma Assume statements) and proved (4 checks)

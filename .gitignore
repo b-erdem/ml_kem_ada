@@ -1,0 +1,14 @@
+/obj/
+/lib/
+/alire/
+/config/
+/tests/obj/
+/tests/lib/
+/tests/alire/
+/tests/config/
+/tests/bin/
+*.ali
+*.o
+*.so
+*.a
+AGENTS.md
