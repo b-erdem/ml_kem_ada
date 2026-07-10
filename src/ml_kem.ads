@@ -1,12 +1,12 @@
 with Interfaces;
-with Ml_Kem_Ada_Config;
+with Ml_Kem_Config;
 
 package ML_KEM is
 
    pragma Pure;
    pragma SPARK_Mode;
 
-   use type Ml_Kem_Ada_Config.Parameter_Set_Kind;
+   use type Ml_Kem_Config.Parameter_Set_Kind;
 
    use type Interfaces.Integer_16;
    use type Interfaces.Integer_32;
@@ -54,7 +54,7 @@ package ML_KEM is
    --  Switched at build time via the Alire crate configuration variable
    --  `parameter_set` (default ML_KEM_768).  See alire.toml's
    --  `[configuration.variables]` block; per-build the generated file
-   --  `config/ml_kem_ada_config.ads` exposes
+   --  `config/ml_kem_config.ads` exposes
    --  `Parameter_Set : constant := ML_KEM_512 | ML_KEM_768 | ML_KEM_1024`.
    --
    --  All five constants below are derived statically from that one
@@ -66,27 +66,27 @@ package ML_KEM is
    --      ML-KEM-1024 : K=4, Eta1=2, Eta2=2, Du=11, Dv=5 (Cat. V)
    ----------------------------------------------------------------------
 
-   ML_KEM_K    : constant := (case Ml_Kem_Ada_Config.Parameter_Set is
-     when Ml_Kem_Ada_Config.Ml_Kem_512  => 2,
-     when Ml_Kem_Ada_Config.Ml_Kem_768  => 3,
-     when Ml_Kem_Ada_Config.Ml_Kem_1024 => 4);
+   ML_KEM_K    : constant := (case Ml_Kem_Config.Parameter_Set is
+     when Ml_Kem_Config.Ml_Kem_512  => 2,
+     when Ml_Kem_Config.Ml_Kem_768  => 3,
+     when Ml_Kem_Config.Ml_Kem_1024 => 4);
 
-   ML_KEM_Eta1 : constant := (case Ml_Kem_Ada_Config.Parameter_Set is
-     when Ml_Kem_Ada_Config.Ml_Kem_512  => 3,
-     when Ml_Kem_Ada_Config.Ml_Kem_768  => 2,
-     when Ml_Kem_Ada_Config.Ml_Kem_1024 => 2);
+   ML_KEM_Eta1 : constant := (case Ml_Kem_Config.Parameter_Set is
+     when Ml_Kem_Config.Ml_Kem_512  => 3,
+     when Ml_Kem_Config.Ml_Kem_768  => 2,
+     when Ml_Kem_Config.Ml_Kem_1024 => 2);
 
    ML_KEM_Eta2 : constant := 2;  --  same across all sets
 
-   ML_KEM_Du   : constant := (case Ml_Kem_Ada_Config.Parameter_Set is
-     when Ml_Kem_Ada_Config.Ml_Kem_512  => 10,
-     when Ml_Kem_Ada_Config.Ml_Kem_768  => 10,
-     when Ml_Kem_Ada_Config.Ml_Kem_1024 => 11);
+   ML_KEM_Du   : constant := (case Ml_Kem_Config.Parameter_Set is
+     when Ml_Kem_Config.Ml_Kem_512  => 10,
+     when Ml_Kem_Config.Ml_Kem_768  => 10,
+     when Ml_Kem_Config.Ml_Kem_1024 => 11);
 
-   ML_KEM_Dv   : constant := (case Ml_Kem_Ada_Config.Parameter_Set is
-     when Ml_Kem_Ada_Config.Ml_Kem_512  => 4,
-     when Ml_Kem_Ada_Config.Ml_Kem_768  => 4,
-     when Ml_Kem_Ada_Config.Ml_Kem_1024 => 5);
+   ML_KEM_Dv   : constant := (case Ml_Kem_Config.Parameter_Set is
+     when Ml_Kem_Config.Ml_Kem_512  => 4,
+     when Ml_Kem_Config.Ml_Kem_768  => 4,
+     when Ml_Kem_Config.Ml_Kem_1024 => 5);
 
    Poly_Bytes_12 : constant := 384;
    --  Per-polynomial byte sizes after Du / Dv compression.  For

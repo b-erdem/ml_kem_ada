@@ -1,4 +1,4 @@
-with "config/ml_kem_ada_config.gpr";
+with "config/ml_kem_config.gpr";
 with "sha3_ada";
 
 library project ML_KEM_Ada is
